@@ -159,7 +159,7 @@ body {
 .baloons img{
     position:absolute;
     display:inline-block;
-    width:240px;      /* Increase size (original is ~60px) */
+    width:350px;      /* Increase size (original is ~60px) */
     height:auto;
     pointer-events:none;
 }
