@@ -172,17 +172,20 @@ const animationTimeline = () => {
         0.2,
         "+=1.5"
     )
-    .staggerFromTo(
-        ".baloons img",
-        2.5, {
-            opacity: 0.9,
-            y: 1400,
-        }, {
-            opacity: 1,
-            y: -1000,
-        },
-        0.2
-    )
+  .staggerFromTo(
+    ".baloons img",
+    10,                // was 2.5
+    {
+        opacity: 0.9,
+        y: 1800
+    },
+    {
+        opacity: 1,
+        y: -1400,
+        ease: Power1.easeOut
+    },
+    0.6                // was 0.2
+)
     .from(
         ".profile-picture",
         0.5, {
