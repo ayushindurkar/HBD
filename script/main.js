@@ -310,3 +310,75 @@ const animationTimeline = () => {
         tl.restart();
     });
 }
+// Add Typewriter helper function
+function typeWriter(element, text, speed, callback) {
+    let i = 0;
+    element.innerHTML = "";
+    
+    // Create typing cursor element
+    const cursor = document.createElement("span");
+    cursor.className = "typewriter-cursor";
+    element.parentNode.appendChild(cursor);
+
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            
+            // Auto-scroll the text-box as typing progresses
+            const textBox = element.closest('.text-box');
+            if (textBox) {
+                textBox.scrollTop = textBox.scrollHeight;
+            }
+            
+            setTimeout(type, speed);
+        } else {
+            cursor.remove();
+            if (callback) callback();
+        }
+    }
+    type();
+}
+
+// Inside animationTimeline function in script/main.js:
+// Replace the .four section in your GSAP timeline with this:
+
+const chatText = `My dearest Adu,
+
+I know you saw this website before, but today I wanted it to tell a different story—a story about us.
+
+The truth is, life gave me many memories, but you became the one I want to keep making new ones with. Every conversation, every laugh, every little fight, every moment we spend together makes my life brighter.
+
+You are the first person I want to tell everything to, the one I miss without any reason, and the one who makes ordinary days feel extraordinary.
+
+Thank you for loving me, believing in me, and accepting me for who I am. I promise to keep choosing you, respecting you, and loving you a little more every single day.
+
+Happy Girlfriend's Day, my beautiful Adu. ❤️`;
+
+tl.from(".four", 0.7, {
+    scale: 0.2,
+    opacity: 0,
+})
+.from(".fake-btn", 0.3, {
+    scale: 0.2,
+    opacity: 0,
+})
+// Pause timeline to type out text
+.add((isReversed, target) => {
+    const chatbox = document.querySelector(".hbd-chatbox");
+    tl.pause();
+    typeWriter(chatbox, chatText, 35, () => {
+        // Automatically resume timeline after text finishes typing (with a small 2s pause to read)
+        setTimeout(() => {
+            tl.resume();
+        }, 2000);
+    });
+})
+.to(".fake-btn", 0.1, {
+    backgroundColor: "rgb(127, 206, 248)",
+})
+.to(".four", 0.5, {
+    scale: 0.2,
+    opacity: 0,
+    y: -150
+}, "+=1")
