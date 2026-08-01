@@ -58,12 +58,12 @@ body {
 
 .four .text-box {
     position: relative;
-    width: min(650px, 92%);
+    width: min(650px, 100%);
     max-height: 65vh; /* Standardized height across mobile/desktop */
     overflow-y: auto; 
     margin: auto;
     padding: 20px;
-    padding-bottom: 70px; /* Space for absolute Send button */
+    padding-bottom: 20px; /* Space for absolute Send button */
     border: 3px solid #aaa;
     border-radius: 8px;
     background: #fff;
