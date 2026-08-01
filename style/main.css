@@ -1,3 +1,13 @@
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+}
+
+
 html {
   box-sizing: border-box;
 }
@@ -15,23 +25,24 @@ body {
       max-width: 80%; /* Adjust based on screen size */
   }
 }
-.container {
-  height: 100vh;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
-  visibility: hidden;
-  width: 100vw;
+.container{
+    width:100%;
+    min-height:100vh;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    visibility:hidden;
 }
 
-.container > div {
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 20vh;
+.container > div:not(.ten){
+    position:absolute;
+    left:0;
+    right:0;
+    top:12vh;
+    padding:20px;
+    box-sizing:border-box;
 }
-
 .one {
   font-size: 4.5rem;
 }
@@ -45,13 +56,16 @@ body {
   font-size: 3rem;
 }
 
-.four .text-box {
-  border: 3px solid #aaa;
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 10px;
-  position: relative;
-  width: 600px;
+.four .text-box{
+    width:min(650px,95%);
+    max-height:65vh;
+    overflow-y:auto;
+    border:3px solid #aaa;
+    border-radius:8px;
+    margin:auto;
+    padding:20px;
+    position:relative;
+    box-sizing:border-box;
 }
 
 .text-box p {
@@ -105,11 +119,11 @@ body {
   z-index: 1;
 }
 
-.six img {
-  display: inline-block;
-  height: 350px;
-  max-width: 100%;
-  /* height: auto; */
+.six img{
+    display:block;
+    width:min(320px,80vw);
+    height:auto;
+    margin:auto;
 }
 
 .six .hat {
@@ -219,9 +233,12 @@ body {
   margin: 10px 0 0;
 }
 
-.nine p {
-  font-size: 2rem;
-  font-weight: lighter;
+.nine p{
+    max-width:900px;
+    margin:auto;
+    font-size:clamp(1rem,3vw,2rem);
+    line-height:1.8;
+    padding:20px;
 }
 
 .ten p {
@@ -259,95 +276,119 @@ body {
   }
 }
 
-@media screen and (max-width: 500px) {
-  .container {
-    width: 90%;
-  }
+@media (max-width:768px){
 
-  .four .text-box {
-    width: 90%;
-  }
+.container>div:not(.ten){
+    top:5vh;
+    padding:20px;
+}
 
-  .text-box .fake-btn {
-    bottom: -38px;
-    right: 5px;
-  }
+.one{
+    font-size:2.3rem;
+}
 
-  .idea-5 span {
-    display: block;
-  }
+.two{
+    font-size:1rem;
+}
 
-  .idea-6 span {
-    font-size: 10rem;
-  }
+.three{
+    font-size:2rem;
+}
 
-  .six .hat {
-    /* top: -20px; */
-    width: 50px;
-  }
+.four .text-box{
+    width:100%;
+    max-height:60vh;
+    font-size:15px;
+}
 
-  .wish-hbd {
-    font-size: 2.2em;
-  }
+.text-box .fake-btn{
+    bottom:-38px;
+}
 
-  .wish h5 {
-    font-size: 1.4rem;
-  }
+.idea-5{
+    font-size:2.2rem !important;
+}
 
-  .nine p {
-    font-size: 1.5rem;
-    font-weight: lighter;
-  }
+.idea-6 span{
+    font-size:5rem;
+}
 
+.six{
+    top:4vh;
+}
 
+.six img{
+    width:200px;
+}
+
+.six .hat{
+    display:none;
+}
+
+.wish-hbd{
+    font-size:2rem;
+}
+
+.wish h5{
+    font-size:1rem;
+}
+
+.nine,
+.ten{
+    justify-content:flex-start;
+    overflow-y:auto;
+}
+
+.nine p,
+.ten p{
+    font-size:1.1rem;
+    line-height:1.8;
+    padding:10px;
+}
+
+.baloons img{
+    width:60px;
+}
 
 }
 
-.ten {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    margin: 0;
-    padding: 50px;
-
-    background: #000;
-    color: #fff;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    opacity: 0;
-    visibility: hidden;
-
-    z-index: 9999;
+.ten{
+    position:fixed !important;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    background:#000;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    box-sizing:border-box;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    opacity:0;
+    visibility:hidden;
+    z-index:9999;
 }
 
 .ten h1,
 .ten p{
     color:#fff;
+    max-width:900px;
 }
 
 .ten-p{
-    font-size:3.2rem;
-    margin-bottom:30px;
-    color:#fff;
-    font-weight:700;
+    font-size:clamp(2rem,5vw,3.5rem);
+    margin-bottom:25px;
 }
 
 .line1,
 .line2,
 .line3{
-    font-size:2rem;
-    margin:18px 0;
+    font-size:clamp(1.1rem,3vw,2rem);
     line-height:1.8;
+    margin:18px 0;
 }
 
 #replay{
