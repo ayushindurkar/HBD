@@ -258,7 +258,7 @@ const animationTimeline = () => {
 .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
 
 // Keep page 9 visible for 5 seconds
-.to(".nine", 0.5, {}, "+=5")
+.to(".nine", 0.5, {}, "+=15")
 
 // Fade out page 9
 .to(".nine",1,{
