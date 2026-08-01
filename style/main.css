@@ -59,43 +59,54 @@ body {
 .four .text-box {
     position: relative;
     width: min(650px, 92%);
-    
-    /* Set a max height so it fits on mobile screens & enables internal scrolling */
-    max-height: 70vh; 
+    max-height: 65vh; /* Standardized height across mobile/desktop */
     overflow-y: auto; 
-    
     margin: auto;
     padding: 20px;
-    padding-bottom: 75px;  /* Keeps text from hiding behind the Send button */
+    padding-bottom: 70px; /* Space for absolute Send button */
     border: 3px solid #aaa;
     border-radius: 8px;
     background: #fff;
     box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
 }
 
-.text-box p {
+.text-box p.hbd-chatbox {
     margin: 0;
     text-align: left;
     line-height: 1.8;
     white-space: pre-line;
     word-break: break-word;
-}
-
-.text-box span {
-    visibility: hidden;
+    font-size: 15px;
 }
 
 .text-box .fake-btn {
-    position: sticky; /* Keeps the Send button at the bottom right during scrolling */
-    bottom: 0;
-    float: right;
-    margin-top: 15px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
     background: #15a1ed;
     color: #fff;
-    padding: 10px 18px;
+    padding: 8px 18px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 15px;
     z-index: 10;
+    margin: 0;
+}
+
+/* Cursor style for typewriter effect */
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    background-color: #15a1ed;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .five p {
@@ -410,20 +421,17 @@ body {
 }
 @media(max-width:768px){
 
-.four{
-    top:5vh !important;
-}
-
-.four .text-box{
-    width:95%;
-    max-height:70vh;
-    padding:18px;
-    padding-bottom:70px;
-}
-
-.text-box p{
-    font-size:15px;
-    line-height:1.8;
-}
-
+.four {
+        top: 5vh !important;
+    }
+    .four .text-box {
+        width: 95%;
+        max-height: 65vh;
+        padding: 16px;
+        padding-bottom: 65px;
+    }
+    .text-box .fake-btn {
+        bottom: 15px !important; /* Fixes button going out of the box */
+        right: 15px;
+    }
 }
